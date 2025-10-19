@@ -1,0 +1,13 @@
+[phases.setup]
+nixPkgs = ["nodejs", "ffmpeg", "python3"]
+
+[phases.install]
+cmds = [
+  "npm install",
+  "curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /tmp/yt-dlp",
+  "chmod a+rx /tmp/yt-dlp",
+  "mv /tmp/yt-dlp /usr/local/bin/yt-dlp || cp /tmp/yt-dlp ./yt-dlp"
+]
+
+[start]
+cmd = "node server.js"
